@@ -1,0 +1,32 @@
+version: '3'
+
+services:
+  livri-postgres:
+    image: postgres
+    environment:
+      POSTGRES_PASSWORD: "postgres"
+    ports:
+      - "5432:5432"
+    volumes:
+      - livri-postgres-db:/var/lib/mysql
+    networks:
+      - livri-network
+      
+  livri-pgadmin:
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: "breno.c.coelho@gmail.com"
+      PGADMIN_DEFAULT_PASSWORD: "PgAdmin2019!"
+    ports:
+      - "8080:80"
+    depends_on:
+      - livri-postgres
+    networks:
+      - livri-network
+
+volumes:
+  livri-postgres-db:
+
+networks: 
+  livri-network:
+    driver: bridge
