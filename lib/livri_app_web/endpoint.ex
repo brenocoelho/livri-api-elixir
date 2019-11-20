@@ -2,7 +2,8 @@ defmodule LivriAppWeb.Endpoint do
   use Phoenix.Endpoint, otp_app: :livri_app
 
   socket "/socket", LivriAppWeb.UserSocket,
-    websocket: true,
+    # websocket: true,
+    websocket: [timeout: 45_000],
     longpoll: false
 
   # Serve at "/" the static files from "priv/static" directory.
