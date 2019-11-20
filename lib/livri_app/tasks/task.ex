@@ -9,6 +9,7 @@ defmodule LivriApp.Tasks.Task do
     field :name, :string
     field :status, :string
     field :when, :date
+    field :tags, :string
     field :user_id, :binary_id
 
     timestamps()
@@ -17,7 +18,7 @@ defmodule LivriApp.Tasks.Task do
   @doc false
   def changeset(task, attrs) do
     task
-    |> cast(attrs, [:name, :when, :frequency, :status])
+    |> cast(attrs, [:name, :when, :frequency, :status, :tags])
     |> validate_required([:name, :when, :frequency, :status])
   end
 end

@@ -15,6 +15,7 @@ defmodule LivriAppWeb.TaskView do
       name: task.name,
       when: task.when,
       frequency: task.frequency,
+      tags: task.tags,
       status: task.status}
   end
 end

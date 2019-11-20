@@ -35,4 +35,11 @@ user_id:references:users \
 name:string \
 when:date \
 frequency:string \
+tags:string \
 status:string
+
+mix phx.gen.json Tags Tag tags \
+user_id:references:users \
+name:string \
+color:string \
+priority:integer

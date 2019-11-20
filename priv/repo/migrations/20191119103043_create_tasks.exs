@@ -8,6 +8,7 @@ defmodule LivriApp.Repo.Migrations.CreateTasks do
       add :when, :date
       add :frequency, :string
       add :status, :string
+      add :tags, :string
       add :user_id, references(:users, on_delete: :nothing, type: :binary_id)
 
       timestamps()

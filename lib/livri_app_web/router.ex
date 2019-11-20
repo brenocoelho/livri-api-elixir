@@ -1,7 +1,7 @@
 defmodule LivriAppWeb.Router do
   use LivriAppWeb, :router
   
-  alias LivriAppWeb.{UserController, TaskController}
+  alias LivriAppWeb.{UserController, TaskController, TagController}
 
   pipeline :api do
     plug :accepts, ["json"]
@@ -13,5 +13,6 @@ defmodule LivriAppWeb.Router do
 
   resources "/users", UserController, except: [:new, :edit]
   resources "/tasks", TaskController, except: [:new, :edit]
+  resources "/tags", TagController, except: [:new, :edit]
 
 end
