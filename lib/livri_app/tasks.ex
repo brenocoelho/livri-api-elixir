@@ -21,6 +21,10 @@ defmodule LivriApp.Tasks do
     Repo.all(Task)
   end
 
+  def list_task_order_by_date do
+    Task |> order_by(:when) |> Repo.all()
+  end
+
   @doc """
   Gets a single task.
 

@@ -7,7 +7,7 @@ defmodule LivriAppWeb.TaskController do
   action_fallback LivriAppWeb.FallbackController
 
   def index(conn, _params) do
-    tasks = Tasks.list_tasks()
+    tasks = Tasks.list_task_order_by_date()
     render(conn, "index.json", tasks: tasks)
   end
 
