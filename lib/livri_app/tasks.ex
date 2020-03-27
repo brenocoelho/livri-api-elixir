@@ -25,6 +25,10 @@ defmodule LivriApp.Tasks do
     Task |> order_by(:when) |> Repo.all()
   end
 
+  def list_task_get_by_tags(tags) do
+    Task |> where(tags: ^tags) |> order_by(:when) |> Repo.all()
+  end
+
   @doc """
   Gets a single task.
 

@@ -1,13 +1,23 @@
 defmodule LivriAppWeb.TaskController do
   use LivriAppWeb, :controller
 
+  require Logger
+
   alias LivriApp.Tasks
   alias LivriApp.Tasks.Task
 
   action_fallback LivriAppWeb.FallbackController
 
-  def index(conn, _params) do
-    tasks = Tasks.list_task_order_by_date()
+  def index(conn, params) do
+    Logger.debug "Var value: #{inspect(params)}"
+
+    tasks = case params do
+      %{"tag" => tag} -> 
+        Tasks.list_task_get_by_tags(tag)
+      _ -> 
+        Tasks.list_task_order_by_date()
+    end
+
     render(conn, "index.json", tasks: tasks)
   end
 
