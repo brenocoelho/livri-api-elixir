@@ -15,14 +15,20 @@ defmodule LivriAppWeb.UserController do
   end
 
   def create(conn, %{"user" => user_params}) do
-    with {:ok, %User{} = user} <- Users.create_user(user_params),
-         {:ok, token, _claims} <- Guardian.encode_and_sign(user) do
-      conn
-      |> put_status(:created)
-      # |> put_resp_header("location", Routes.user_path(conn, :show, user))
-      # |> render("show.json", user: user)
-      |> render("jwt.json", token: token)
-    end
+    case Users.get_user_by_username!(user_params["username"]) do
+      %User{} ->
+        {:error, :conflict}
+      _ ->
+        with {:ok, %User{} = user} <- Users.create_user(user_params),
+            {:ok, token, _claims} <- Guardian.encode_and_sign(user) do
+          conn
+          |> put_status(:created)
+          # |> put_resp_header("location", Routes.user_path(conn, :show, user))
+          # |> render("show.json", user: user)
+          |> render("jwt.json", token: token)
+        end
+        {:error, :unauthorized}
+      end
   end
 
   def show(conn, _params) do

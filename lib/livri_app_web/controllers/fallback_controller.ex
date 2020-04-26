@@ -26,4 +26,10 @@ defmodule LivriAppWeb.FallbackController do
     |> json(%{error: "Login error"})
   end
 
+  def call(conn, {:error, :conflict}) do
+    conn
+    |> put_status(:conflict)
+    |> json(%{error: "Username already exists"})
+  end
+
 end

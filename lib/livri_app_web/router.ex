@@ -16,7 +16,9 @@ defmodule LivriAppWeb.Router do
 
     post "/login", UserController, :login
     post "/signup", UserController, :create
+
     # get "/users", UserController, :index
+    # delete "/users/:id", UserController, :delete
   end
 
   scope "/api/v1", LivriAppWeb do

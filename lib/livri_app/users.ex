@@ -38,6 +38,13 @@ defmodule LivriApp.Users do
   """
   def get_user!(id), do: Repo.get!(User, id)
 
+
+  def get_user_by_username!(username) do
+    query = from u in User, where: u.username == ^username
+    Repo.one(query)
+  end
+
+
   @doc """
   Creates a user.
 
