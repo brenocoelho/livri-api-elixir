@@ -13,7 +13,8 @@ defmodule LivriAppWeb.TaskView do
   def render("task.json", %{task: task}) do
     %{id: task.id,
       name: task.name,
-      when: task.when,
+      detail: task.detail,
+      due_date: task.due_date,
       frequency: task.frequency,
       tags: task.tags,
       status: task.status}

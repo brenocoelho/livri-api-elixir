@@ -5,7 +5,7 @@ defmodule LivriAppWeb.UserControllerTest do
   alias LivriApp.Users.User
 
   @create_attrs %{
-    digital_hash: "some digital_hash",
+    password: "some password",
     document: "some document",
     email: "some email",
     first_name: "some first_name",
@@ -14,7 +14,7 @@ defmodule LivriAppWeb.UserControllerTest do
     username: "some username"
   }
   @update_attrs %{
-    digital_hash: "some updated digital_hash",
+    password: "some updated password",
     document: "some updated document",
     email: "some updated email",
     first_name: "some updated first_name",
@@ -22,7 +22,7 @@ defmodule LivriAppWeb.UserControllerTest do
     phone: "some updated phone",
     username: "some updated username"
   }
-  @invalid_attrs %{digital_hash: nil, document: nil, email: nil, first_name: nil, last_name: nil, phone: nil, username: nil}
+  @invalid_attrs %{password: nil, document: nil, email: nil, first_name: nil, last_name: nil, phone: nil, username: nil}
 
   def fixture(:user) do
     {:ok, user} = Users.create_user(@create_attrs)
@@ -49,7 +49,7 @@ defmodule LivriAppWeb.UserControllerTest do
 
       assert %{
                "id" => id,
-               "digital_hash" => "some digital_hash",
+               "password" => "some password",
                "document" => "some document",
                "email" => "some email",
                "first_name" => "some first_name",
@@ -76,7 +76,7 @@ defmodule LivriAppWeb.UserControllerTest do
 
       assert %{
                "id" => id,
-               "digital_hash" => "some updated digital_hash",
+               "password" => "some updated password",
                "document" => "some updated document",
                "email" => "some updated email",
                "first_name" => "some updated first_name",

@@ -5,12 +5,13 @@ defmodule LivriApp.Tasks.Task do
   @primary_key {:id, :binary_id, autogenerate: true}
   @foreign_key_type :binary_id
   schema "tasks" do
-    field :frequency, :string
+    field :user_id, :binary_id, primary_key: true
     field :name, :string
-    field :status, :string
-    field :when, :date
+    field :detail, :string
+    field :due_date, :string
+    field :frequency, :string
     field :tags, :string
-    field :user_id, :binary_id
+    field :status, :string
 
     timestamps()
   end
@@ -18,7 +19,7 @@ defmodule LivriApp.Tasks.Task do
   @doc false
   def changeset(task, attrs) do
     task
-    |> cast(attrs, [:name, :when, :frequency, :status, :tags])
-    |> validate_required([:name, :when, :frequency, :status])
+    |> cast(attrs, [:user_id, :name, :detail, :due_date, :frequency, :status, :tags])
+    |> validate_required([:user_id, :name, :due_date, :frequency, :status])
   end
 end

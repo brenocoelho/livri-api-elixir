@@ -26,6 +26,16 @@ config :logger, :console,
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
 
+# Guardian
+config :livri_app, LivriApp.Users.Guardian,
+  issuer: "livri.io",
+  secret_key: "K5zSmPCl9zEzQssgk+SfDNhPA9rkaA5R1aY2j+5rJXLe+BrVDv3MmelK5mGr3CHf"
+
+# config :livri_app, LivriApp.Users.AuthAccessPipeline,
+#   module: LivriApp.Users.Guardian,
+#   error_handler: LivriApp.Users.AuthErrorHandler
+
+
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{Mix.env()}.exs"

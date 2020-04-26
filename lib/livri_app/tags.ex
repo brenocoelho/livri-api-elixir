@@ -17,8 +17,10 @@ defmodule LivriApp.Tags do
       [%Tag{}, ...]
 
   """
-  def list_tags do
-    Repo.all(Tag)
+  def list_tags(user_id) do
+    query = from t in Tag,
+            where: t.user_id == ^user_id
+    Repo.all(query)
   end
 
   @doc """
@@ -35,7 +37,10 @@ defmodule LivriApp.Tags do
       ** (Ecto.NoResultsError)
 
   """
-  def get_tag!(id), do: Repo.get!(Tag, id)
+  def get_tag!(user_id, id) do
+    query = from t in Tag, where: t.user_id == ^user_id and t.id == ^id
+    Repo.one(query)
+  end
 
   @doc """
   Creates a tag.

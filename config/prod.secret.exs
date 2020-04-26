@@ -11,10 +11,16 @@ database_url =
     For example: ecto://USER:PASS@HOST/DATABASE
     """
 
+# config :livri_app, LivriApp.Repo,
+#   ssl: true,
+#   url: database_url,
+#   pool_size: String.to_integer(System.get_env("POOL_SIZE") || "10")
+
 config :livri_app, LivriApp.Repo,
-  ssl: true,
-  url: database_url,
-  pool_size: String.to_integer(System.get_env("POOL_SIZE") || "10")
+  # ExAws configuration
+  access_key_id: [{:system, "AKIAJVOVNV4VM77NIMWA"}, :instance_role],
+  secret_access_key: [{:system, "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"}, :instance_role],
+  region: "us-east-1"  
 
 secret_key_base =
   System.get_env("SECRET_KEY_BASE") ||

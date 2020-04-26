@@ -17,7 +17,10 @@ defmodule LivriAppWeb.UserView do
       first_name: user.first_name,
       last_name: user.last_name,
       email: user.email,
-      phone: user.phone,
-      digital_hash: user.digital_hash}
+      phone: user.phone}
   end
+
+  def render("jwt.json", %{token: jwt}) do
+    %{token: jwt}
+  end  
 end

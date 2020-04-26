@@ -17,17 +17,19 @@ defmodule LivriApp.Tasks do
       [%Task{}, ...]
 
   """
-  def list_tasks do
-    Repo.all(Task)
+  def list_tasks(user_id) do
+    query = from t in Task,
+            where: t.user_id == ^user_id
+    Repo.all(query)
   end
 
-  def list_task_order_by_date do
-    Task |> order_by(:when) |> Repo.all()
-  end
+  # def list_task_order_by_date do
+  #   Task |> order_by(:when) |> Repo.all()
+  # end
 
-  def list_task_get_by_tags(tags) do
-    Task |> where(tags: ^tags) |> order_by(:when) |> Repo.all()
-  end
+  # def list_task_get_by_tags(tags) do
+  #   Task |> where(tags: ^tags) |> order_by(:when) |> Repo.all()
+  # end
 
   @doc """
   Gets a single task.
@@ -43,8 +45,11 @@ defmodule LivriApp.Tasks do
       ** (Ecto.NoResultsError)
 
   """
-  def get_task!(id), do: Repo.get!(Task, id)
-
+  def get_task!(user_id, id) do
+    query = from t in Task, where: t.user_id == ^user_id and t.id == ^id
+    Repo.one(query)
+  end
+  
   @doc """
   Creates a task.
 

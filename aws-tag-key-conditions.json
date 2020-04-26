@@ -1,0 +1,18 @@
+{
+    "UserId": {
+        "AttributeValueList": [
+            {   
+                "S": "94f49799-f858-4b8d-adbf-abf1040dff1a"
+            }   
+        ],  
+        "ComparisonOperator": "EQ"
+    },  
+    "Name": {
+        "AttributeValueList": [
+            {   
+                "S": "Banestes"
+            }   
+        ],  
+        "ComparisonOperator": "EQ"
+    }
+}

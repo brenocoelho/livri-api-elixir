@@ -20,7 +20,8 @@ defmodule LivriApp.MixProject do
   def application do
     [
       mod: {LivriApp.Application, []},
-      extra_applications: [:logger, :runtime_tools]
+      # applications: [:ecto_adapters_dynamodb],
+      extra_applications: [:logger, :runtime_tools, :ecto_adapters_dynamodb]
     ]
   end
 
@@ -40,7 +41,11 @@ defmodule LivriApp.MixProject do
       {:postgrex, ">= 0.0.0"},
       {:gettext, "~> 0.11"},
       {:jason, "~> 1.0"},
-      {:plug_cowboy, "~> 2.0"}
+      {:plug_cowboy, "~> 2.0"},
+      {:ecto_adapters_dynamodb, "~> 2.0.0-beta.1"},
+      {:guardian, "~> 2.0"},
+      {:guardian_phoenix, "~> 2.0"},
+      {:argon2_elixir, "~> 2.0"},
     ]
   end
 

@@ -6,9 +6,9 @@ defmodule LivriApp.UsersTest do
   describe "users" do
     alias LivriApp.Users.User
 
-    @valid_attrs %{digital_hash: "some digital_hash", document: "some document", email: "some email", first_name: "some first_name", last_name: "some last_name", phone: "some phone", username: "some username"}
-    @update_attrs %{digital_hash: "some updated digital_hash", document: "some updated document", email: "some updated email", first_name: "some updated first_name", last_name: "some updated last_name", phone: "some updated phone", username: "some updated username"}
-    @invalid_attrs %{digital_hash: nil, document: nil, email: nil, first_name: nil, last_name: nil, phone: nil, username: nil}
+    @valid_attrs %{password: "some password", document: "some document", email: "some email", first_name: "some first_name", last_name: "some last_name", phone: "some phone", username: "some username"}
+    @update_attrs %{password: "some updated password", document: "some updated document", email: "some updated email", first_name: "some updated first_name", last_name: "some updated last_name", phone: "some updated phone", username: "some updated username"}
+    @invalid_attrs %{password: nil, document: nil, email: nil, first_name: nil, last_name: nil, phone: nil, username: nil}
 
     def user_fixture(attrs \\ %{}) do
       {:ok, user} =
@@ -31,7 +31,7 @@ defmodule LivriApp.UsersTest do
 
     test "create_user/1 with valid data creates a user" do
       assert {:ok, %User{} = user} = Users.create_user(@valid_attrs)
-      assert user.digital_hash == "some digital_hash"
+      assert user.password == "some password"
       assert user.document == "some document"
       assert user.email == "some email"
       assert user.first_name == "some first_name"
@@ -47,7 +47,7 @@ defmodule LivriApp.UsersTest do
     test "update_user/2 with valid data updates the user" do
       user = user_fixture()
       assert {:ok, %User{} = user} = Users.update_user(user, @update_attrs)
-      assert user.digital_hash == "some updated digital_hash"
+      assert user.password == "some updated password"
       assert user.document == "some updated document"
       assert user.email == "some updated email"
       assert user.first_name == "some updated first_name"

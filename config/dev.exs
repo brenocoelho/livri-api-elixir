@@ -2,12 +2,31 @@ use Mix.Config
 
 # Configure your database
 config :livri_app, LivriApp.Repo,
-  username: "postgres",
-  password: "postgres",
-  database: "livri_app_dev",
-  hostname: "localhost",
-  show_sensitive_data_on_connection_error: true,
-  pool_size: 10
+  # username: "postgres",
+  # password: "postgres",
+  # database: "livri_app_dev"
+  # hostname: "localhost",
+  # show_sensitive_data_on_connection_error: true,
+  # pool_size: 10,
+  access_key_id: "AKIAJVOVNV4VM77NIMWA",
+  secret_access_key: "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",
+  # access_key_id: "abcde",
+  # secret_access_key: "12345",
+  region: "us-east-1",
+  debug_requests: true,	# ExAws option to enable debug on aws http request.
+  dynamodb: [
+    scheme: "http://",
+    host: "localhost",
+    port: "8000",
+    region: "us-east-1"
+  ]
+
+  config :ecto_adapters_dynamodb,
+  dynamodb_local: true,
+  scan_tables: ["schema_migrations", "users"],
+  insert_nil_fields: true
+  # remove_nil_fields_on_update: true,
+  # cached_tables: ["tasks"]
 
 # For development, we disable any cache and enable
 # debugging and code reloading.
@@ -55,3 +74,10 @@ config :phoenix, :stacktrace_depth, 20
 
 # Initialize plugs at runtime for faster development compilation
 config :phoenix, :plug_init_mode, :runtime
+
+# # ExAws
+# config :ex_aws, :dynamodb,
+#   scheme: "http://",
+#   host: "localhost",
+#   port: "8000",
+#   region: "us-east-1"  
