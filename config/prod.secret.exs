@@ -16,11 +16,29 @@ database_url =
 #   url: database_url,
 #   pool_size: String.to_integer(System.get_env("POOL_SIZE") || "10")
 
+aws_access_key_id =
+  System.get_env("AWS_ACCESS_KEY_ID") ||
+    raise """
+    environment variable AWS_ACCESS_KEY_ID is missing.
+    """
+
+aws_secret_access_key =
+  System.get_env("AWS_SECRET_ACCESS_KEY") ||
+    raise """
+    environment variable AWS_SECRET_ACCESS_KEY is missing.
+    """
+
+aws_region =
+  System.get_env("AWS_REGION") ||
+    raise """
+    environment variable AWS_REGION is missing.
+    """
+
 config :livri_app, LivriApp.Repo,
   # ExAws configuration
-  access_key_id: [{:system, "AKIAJVOVNV4VM77NIMWA"}, :instance_role],
-  secret_access_key: [{:system, "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"}, :instance_role],
-  region: "us-east-1"  
+  access_key_id: aws_access_key_id,
+  secret_access_key: aws_secret_access_key,
+  region: aws_region  
 
 secret_key_base =
   System.get_env("SECRET_KEY_BASE") ||

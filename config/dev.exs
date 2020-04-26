@@ -2,17 +2,9 @@ use Mix.Config
 
 # Configure your database
 config :livri_app, LivriApp.Repo,
-  # username: "postgres",
-  # password: "postgres",
-  # database: "livri_app_dev"
-  # hostname: "localhost",
-  # show_sensitive_data_on_connection_error: true,
-  # pool_size: 10,
-  access_key_id: "AKIAJVOVNV4VM77NIMWA",
-  secret_access_key: "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",
-  # access_key_id: "abcde",
-  # secret_access_key: "12345",
-  region: "us-east-1",
+  access_key_id: System.get_env("AWS_ACCESS_KEY_ID"),
+  secret_access_key: System.get_env("AWS_SECRET_ACCESS_KEY"),
+  region: System.get_env("AWS_REGION"),
   debug_requests: true,	# ExAws option to enable debug on aws http request.
   dynamodb: [
     scheme: "http://",
