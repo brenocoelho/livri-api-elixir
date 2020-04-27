@@ -1,5 +1,13 @@
 use Mix.Config
 
+
+# Configure your database
+# ExAws configuration
+config :livri_app, LivriApp.Repo,
+  access_key_id: aws_access_key_id,
+  secret_access_key: aws_secret_access_key,
+  region: aws_region
+
 # For production, don't forget to configure the url host
 # to something meaningful, Phoenix uses this information
 # when generating URLs.
@@ -10,7 +18,7 @@ use Mix.Config
 # which you should run after static files are built and
 # before starting your production server.
 config :livri_app, LivriAppWeb.Endpoint,
-  url: [host: "example.com", port: 80],
+  url: [host: "localhost", port: 4000],
   url: [scheme: "https", host: "glacial-headland-00548", port: 443],
   force_ssl: [rewrite_on: [:x_forwarded_proto]],
   cache_static_manifest: "priv/static/cache_manifest.json"

@@ -4,18 +4,6 @@
 # remember to add this file to your .gitignore.
 use Mix.Config
 
-database_url =
-  System.get_env("DATABASE_URL") ||
-    raise """
-    environment variable DATABASE_URL is missing.
-    For example: ecto://USER:PASS@HOST/DATABASE
-    """
-
-# config :livri_app, LivriApp.Repo,
-#   ssl: true,
-#   url: database_url,
-#   pool_size: String.to_integer(System.get_env("POOL_SIZE") || "10")
-
 aws_access_key_id =
   System.get_env("AWS_ACCESS_KEY_ID") ||
     raise """
@@ -33,12 +21,6 @@ aws_region =
     raise """
     environment variable AWS_REGION is missing.
     """
-
-config :livri_app, LivriApp.Repo,
-  # ExAws configuration
-  access_key_id: aws_access_key_id,
-  secret_access_key: aws_secret_access_key,
-  region: aws_region  
 
 secret_key_base =
   System.get_env("SECRET_KEY_BASE") ||
