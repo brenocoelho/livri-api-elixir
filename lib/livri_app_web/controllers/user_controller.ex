@@ -25,7 +25,7 @@ defmodule LivriAppWeb.UserController do
           |> put_status(:created)
           # |> put_resp_header("location", Routes.user_path(conn, :show, user))
           # |> render("show.json", user: user)
-          |> render("jwt.json", token: token)
+          |> render("token.json", user: user, token: token)
         end
         {:error, :unauthorized}
       end
@@ -61,7 +61,7 @@ defmodule LivriAppWeb.UserController do
 
   defp login_reply({:ok, %User{} = user}, conn) do
     with {:ok, token, _claims} <- Guardian.encode_and_sign(user) do
-      conn |> render("jwt.json", token: token)
+      conn |> render("token.json", user: user, token: token)
     end
   end
 

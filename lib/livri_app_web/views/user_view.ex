@@ -20,7 +20,7 @@ defmodule LivriAppWeb.UserView do
       phone: user.phone}
   end
 
-  def render("jwt.json", %{token: jwt}) do
-    %{token: jwt}
+  def render("token.json", %{user: user, token: token}) do
+    %{data: render_one(user, UserView, "user.json"), token: token}
   end  
 end
