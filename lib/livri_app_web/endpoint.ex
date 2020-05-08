@@ -41,5 +41,7 @@ defmodule LivriAppWeb.Endpoint do
     key: "_livri_app_key",
     signing_salt: "1SRI8wlY"
 
+  plug CORSPlug
+
   plug LivriAppWeb.Router
 end

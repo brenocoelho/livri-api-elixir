@@ -46,6 +46,7 @@ defmodule LivriApp.MixProject do
       {:guardian, "~> 2.0"},
       {:guardian_phoenix, "~> 2.0"},
       {:argon2_elixir, "~> 2.0"},
+      {:cors_plug, "~> 2.0"},
     ]
   end
 
