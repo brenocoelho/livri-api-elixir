@@ -14,7 +14,7 @@ config :livri_app, LivriApp.Repo,
     region: "us-east-1"
   ]
 
-  config :ecto_adapters_dynamodb,
+config :ecto_adapters_dynamodb,
   dynamodb_local: true,
   scan_tables: ["schema_migrations", "users"],
   insert_nil_fields: true

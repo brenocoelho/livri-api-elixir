@@ -11,6 +11,17 @@ services:
     networks:
       - livri-network
 
+  # livri-postgres:
+  #   image: postgres
+  #   environment:
+  #     POSTGRES_PASSWORD: "password"
+  #   ports:
+  #     - "5432:5432"
+  #   # volumes:
+  #   #   - livri-postgres-data:/var/lib/postgresql/data 
+  #   networks:
+  #     - livri-network
+
 volumes:
   livri-dynamodb-data:
 

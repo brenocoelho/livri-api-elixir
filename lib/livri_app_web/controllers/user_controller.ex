@@ -27,7 +27,7 @@ defmodule LivriAppWeb.UserController do
           # |> render("show.json", user: user)
           |> render("token.json", user: user, token: token)
         end
-        {:error, :unauthorized}
+        # {:error, :unauthorized}
       end
   end
 

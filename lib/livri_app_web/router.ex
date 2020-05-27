@@ -17,19 +17,19 @@ defmodule LivriAppWeb.Router do
     post "/login", UserController, :login
     post "/signup", UserController, :create
 
-    get "/users", UserController, :index
+    # get "/users", UserController, :index
     # delete "/users/:id", UserController, :delete
   end
 
   scope "/api/v1", LivriAppWeb do
     pipe_through [:api, :jwt_authenticated]
 
-    get "/users", UserController, :show
-    put "/users", UserController, :update
-    delete "/users", UserController, :delete
+    get "/user", UserController, :show
+    put "/user", UserController, :update
+    delete "/user", UserController, :delete
 
     resources "/tasks", TaskController, except: [:new, :edit]
     resources "/tags", TagController, except: [:new, :edit]
-  end  
+  end
 
 end

@@ -22,7 +22,8 @@ defmodule LivriApp.Users.User do
   def changeset(user, attrs) do
     user
     |> cast(attrs, [:document, :username, :first_name, :last_name, :email, :phone, :password])
-    |> validate_required([:document, :username, :first_name, :last_name, :email, :phone])
+    # |> validate_required([:document, :username, :first_name, :last_name, :email, :phone])
+    |> validate_required([:username, :first_name, :last_name])
     |> put_password_hash()
   end
 

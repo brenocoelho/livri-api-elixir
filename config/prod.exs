@@ -8,6 +8,11 @@ config :livri_app, LivriApp.Repo,
   secret_access_key: System.get_env("AWS_SECRET_ACCESS_KEY"),
   region: System.get_env("AWS_REGION")
 
+config :ecto_adapters_dynamodb,
+  dynamodb_local: false,
+  scan_tables: ["schema_migrations", "users"],
+  insert_nil_fields: true  
+
 # For production, don't forget to configure the url host
 # to something meaningful, Phoenix uses this information
 # when generating URLs.
